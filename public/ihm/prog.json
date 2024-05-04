@@ -1,0 +1,368 @@
+[
+    {
+        "nome": "teste",
+        "element": [
+            {
+                "type": "button",
+                "x": 320,
+                "y": 190,
+                "w": 150,
+                "h": 20,
+                "label": "Automático (°C)",
+                "id": "auto_valve2",
+                "com": 0,
+                "tag": "auto_valve",
+                "mode": "bool",
+                "group": 0
+            },
+            {
+                "type": "button",
+                "x": 320,
+                "y": 28,
+                "w": 150,
+                "h": 20,
+                "label": "Balança",
+                "label_on": "Balança Ligada",
+                "label_off": "Balança Desligada",
+                "id": "auto_valve2",
+                "com": 0,
+                "tag": "auto_valve",
+                "mode": "bool"
+            },
+            {
+                "type": "image",
+                "src": "prensa.png",
+                "id": "prensa1",
+                "group": 0,
+                "x": 220,
+                "y": 260,
+                "w": 100,
+                "h": 100
+            },
+            {
+                "type": "image",
+                "src": "left_arrow.png",
+                "group": 0,
+                "x": 330,
+                "y": 165,
+                "w": 20,
+                "h": 20,
+                "tag": "valve",
+                "value": "0",
+                "com": 0
+            },
+            {
+                "type": "image",
+                "src": "right_arrow.png",
+                "group": 0,
+                "x": 430,
+                "y": 165,
+                "w": 20,
+                "h": 20,
+                "tag": "valve",
+                "value": "1",
+                "com": 0
+            },
+            {
+                "type": "text",
+                "label": "Prensa 01",
+                "group": 0,
+                "x": 270,
+                "y": 340,
+                "w": 20,
+                "h": 20
+            },
+            {
+                "type": "text",
+                "label": "Vapor",
+                "group": 0,
+                "x": 376,
+                "y": 165,
+                "w": 20,
+                "h": 20,
+                "src": "heat.png"
+            },
+            {
+                "type": "image",
+                "id": "cozinhador1",
+                "src": "cozinhador.png",
+                "group": 0,
+                "x": 230,
+                "y": 190,
+                "w": 100,
+                "h": 100
+            },
+            {
+                "type": "image",
+                "src": "silo.png",
+                "x": 238,
+                "y": 0,
+                "w": 80,
+                "h": 80
+            },
+            {
+                "type": "image",
+                "src": "mill.png",
+                "x": 600,
+                "y": 0,
+                "w": 80,
+                "h": 80
+            },
+            {
+                "type": "display",
+                "id": "carregado",
+                "x": 320,
+                "tag": "temp_atual",
+                "y": 0,
+                "size": "medium",
+                "label": "Entrada",
+                "unit": "kg",
+                "com": 0
+            },
+            {
+                "type": "display",
+                "id": "temp_cozinhador",
+                "group": 0,
+                "x": 320,
+                "tag": "temp_atual",
+                "y": 210,
+                "label": "Temp CZ 01",
+                "unit": "c",
+                "com": 0,
+                "round": 0
+            },
+            {
+                "type": "range",
+                "orientation": "vertical",
+                "group": 0,
+                "tag": "temp_set",
+                "x": 398,
+                "y": 210,
+                "label": "Temp CZ 01 Set",
+                "unit": "c",
+                "com": 0
+            },
+            {
+                "type": "display",
+                "id": "temp_rolamento",
+                "group": 0,
+                "x": 320,
+                "tag": "temp_rol",
+                "y": 340,
+                "label": "Temp Rol 01",
+                "unit": "c",
+                "com": 0,
+                "round": 0
+            },
+            {
+                "type": "display",
+                "id": "amp",
+                "tag": "corrente_atual",
+                "group": 0,
+                "x": 320,
+                "y": 315,
+                "label": "Atual P1",
+                "unit": "a",
+                "com": 0,
+                "round": 0
+            },
+            {
+                "type": "range",
+                "orientation": "vertical",
+                "group": 0,               
+                "tag": "corrente_set",
+                "x": 398,
+                "y": 315,
+                "label": "P1 Set",
+                "unit": "a",
+                "com": 0
+            },
+            {
+                "type": "image",
+                "src": "left_arrow.png",
+                "group": 0,
+                "x": 320,
+                "y": 260,
+                "w": 20,
+                "h": 20,
+                "tag": "prensa",
+                "value": "down",
+                "com": 0
+            },
+            {
+                "type": "image",
+                "src": "right_arrow.png",
+                "group": 0,
+                "x": 450,
+                "y": 260,
+                "w": 20,
+                "h": 20,
+                "tag": "prensa",
+                "value": "up",
+                "com": 0
+            },
+            {
+                "type": "text",
+                "label": "Alimentação",
+                "group": 0,
+                "x": 358,
+                "y": 250,
+                "w": 60,
+                "h": 20,
+                "src": "flow.png"
+            },
+            {
+                "type": "progressbar",
+                "label": "Alimentação P 01",
+                "group": 0,
+                "x": 345,
+                "y": 270,
+                "w": 100,
+                "h": 20,
+                "tag": "analog_output",
+                "com": 0
+            },
+            {
+                "type": "button",
+                "x": 320,
+                "y": 295,
+                "w": 150,
+                "h": 20,
+                "label": "Automático (Amp)",
+                "com": 0,
+                "tag": "auto_prensa",
+                "mode": "bool",
+                "group": 0
+            },
+            {
+                "type": "button",
+                "x": 250,
+                "y": 150,
+                "w": 60,
+                "h": 20,
+                "label": "Auto",
+                "com": 0,
+                "tag": "auto",               
+                "group": 0
+            },
+            {
+                "type": "button",
+                "x": 250,
+                "y": 170,
+                "w": 60,
+                "h": 20,
+                "label": "Aberto",
+                "com": 0,
+                "tag": "auto",               
+                "group": 0
+            },
+            {
+                "type": "retangle",
+                "x": 250,
+                "y": 120,
+                "w": 660,
+                "h": 30,
+                "label":"Calha de alimentação"  
+            },
+            {
+                "type": "text",
+                "label": "Alimentação",
+               
+                "x": 730,
+                "y": 0,
+                "w": 60,
+                "h": 20,
+                "src": "flow.png"
+            },
+            {
+                "type": "progressbar",
+                "label": "Alimentação M 01",                
+                "x": 718,
+                "y": 20,
+                "w": 100,
+                "h": 20,
+                "tag": "analog_output",
+                "com": 0
+            },
+            {
+                "type": "button",
+                "x": 692,
+                "y": 46,
+                "w": 150,
+                "h": 20,
+                "label": "Automático (Amp)",
+                "com": 0,
+                "tag": "auto_prensa",
+                "mode": "bool"
+               
+            },
+            {
+                "type": "display",               
+                "tag": "corrente_atual",                
+                "x": 692,
+                "y": 70,
+                "label": "Atual M01",
+                "unit": "a",
+                "com": 0,
+                "round": 0
+            },
+            {
+                "type": "range",
+                "orientation": "vertical",                         
+                "tag": "corrente_set",
+                "x": 770,
+                "y": 70,
+                "label": "M01 Set",
+                "unit": "a",
+                "com": 0
+            },
+            {
+                "type": "image",
+                "src": "left_arrow.png",
+                
+                "x": 690,
+                "y": 10,
+                "w": 20,
+                "h": 20,
+                "tag": "prensa",
+                "value": "down",
+                "com": 1
+            },
+            {
+                "type": "image",
+                "src": "right_arrow.png",               
+                "x": 822,
+                "y": 10,
+                "w": 20,
+                "h": 20,
+                "tag": "prensa",
+                "value": "up",
+                "com": 1
+            },
+            {
+                "type": "clone",
+                "group": 0,
+                "x": 300,
+                "y": 0,
+                "com": 1,
+                "index_old": 1,
+                "index": 2
+            },
+            {
+                "type": "clone",
+                "group": 0,
+                "x": 600,
+                "y": 0,
+                "com": 2,
+                "index_old": 1,
+                "index": 3
+            }           
+        ],
+        "com": [
+            {
+                "ip": "192.168.1.231",
+                "name": "placa p1"
+            }
+        ]
+    }
+]
