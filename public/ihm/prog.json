@@ -9,11 +9,73 @@
                 "w": 150,
                 "h": 20,
                 "label": "Automático (°C)",
-                "id": "auto_valve2",
-                "com": 0,
+                "com": 1,
                 "tag": "auto_valve",
                 "mode": "bool",
                 "group": 0
+            },
+            {
+                "type": "image",
+                "src": "silo.png",
+                "x": 238,
+                "y": 0,
+                "w": 80,
+                "h": 80
+            },
+            {
+                "type": "button",
+                "x": 245,
+                "y": 12,
+                "w": 60,
+                "h": 20,
+                "label": "Zera",
+                "com": 0,
+                "tag": "zera",
+                "value": "1"
+            },
+            {
+                "type": "button",
+                "x": 660,
+                "y": 12,
+                "w": 150,
+                "h": 40,
+                "label": "Começa Produção",
+                "com": 9,
+                "tag": "value"             
+            },
+            {
+                "type": "button",
+                "x": 845,
+                "y": 12,
+                "w": 150,
+                "h": 40,
+                "label": "Finaliza Produção",
+                "com": 8                
+            },
+            {
+                "type": "button",
+                "x": 570,
+                "tag": "value",
+                "y": 30,               
+                "label": "Em operação",
+                "unit": "",
+                "com": 10,
+                "mode": "boolText",               
+                "label_on": {
+                    "text": "Em produção",
+                    "value": [
+                        "1"  
+                    ],
+                    "output": "start"
+                },
+                "label_off": {
+                    "text": "Produção desativada",
+                    "value": [                       
+                        "0"
+                    ],
+                    "output": "finish"
+                }
+                
             },
             {
                 "type": "button",
@@ -22,12 +84,29 @@
                 "w": 150,
                 "h": 20,
                 "label": "Balança",
-                "label_on": "Balança Ligada",
-                "label_off": "Balança Desligada",
-                "id": "auto_valve2",
+                "label_on": {
+                    "text": "Balança Ligada",
+                    "value": [
+                        "load",
+                        "check_weight_1",
+                        "check_weight_2",
+                        "unloading",
+                        "stabilization"
+
+                    ],
+                    "output": "start"
+                },
+                "label_off": {
+                    "text": "Balança Desligada",
+                    "value": [
+                        "stop",
+                        "0"
+                    ],
+                    "output": "finish"
+                },
                 "com": 0,
-                "tag": "auto_valve",
-                "mode": "bool"
+                "tag": "status",
+                "mode": "boolText"
             },
             {
                 "type": "image",
@@ -43,25 +122,25 @@
                 "type": "image",
                 "src": "left_arrow.png",
                 "group": 0,
-                "x": 330,
-                "y": 165,
-                "w": 20,
-                "h": 20,
+                "x": 320,
+                "y": 155,
+                "w": 30,
+                "h": 30,
                 "tag": "valve",
                 "value": "0",
-                "com": 0
+                "com": 1
             },
             {
                 "type": "image",
                 "src": "right_arrow.png",
                 "group": 0,
                 "x": 430,
-                "y": 165,
-                "w": 20,
-                "h": 20,
+                "y": 155,
+                "w": 30,
+                "h": 30,
                 "tag": "valve",
                 "value": "1",
-                "com": 0
+                "com": 1
             },
             {
                 "type": "text",
@@ -92,30 +171,26 @@
                 "w": 100,
                 "h": 100
             },
-            {
-                "type": "image",
-                "src": "silo.png",
-                "x": 238,
-                "y": 0,
-                "w": 80,
-                "h": 80
-            },
-            {
-                "type": "image",
-                "src": "mill.png",
-                "x": 600,
-                "y": 0,
-                "w": 80,
-                "h": 80
-            },
+            
+         
+            
             {
                 "type": "display",
-                "id": "carregado",
                 "x": 320,
-                "tag": "temp_atual",
+                "tag": "carregado",
                 "y": 0,
                 "size": "medium",
                 "label": "Entrada",
+                "unit": "kg",
+                "com": 0
+            },
+            {
+                "type": "display",
+                "x": 320,
+                "tag": "peso_atual",
+                "y": 51,
+                "size": "medium",
+                "label": "Peso atual",
                 "unit": "kg",
                 "com": 0
             },
@@ -128,7 +203,7 @@
                 "y": 210,
                 "label": "Temp CZ 01",
                 "unit": "c",
-                "com": 0,
+                "com": 1,
                 "round": 0
             },
             {
@@ -140,19 +215,7 @@
                 "y": 210,
                 "label": "Temp CZ 01 Set",
                 "unit": "c",
-                "com": 0
-            },
-            {
-                "type": "display",
-                "id": "temp_rolamento",
-                "group": 0,
-                "x": 320,
-                "tag": "temp_rol",
-                "y": 340,
-                "label": "Temp Rol 01",
-                "unit": "c",
-                "com": 0,
-                "round": 0
+                "com": 1
             },
             {
                 "type": "display",
@@ -160,46 +223,68 @@
                 "tag": "corrente_atual",
                 "group": 0,
                 "x": 320,
-                "y": 315,
+                "y": 340,
                 "label": "Atual P1",
                 "unit": "a",
-                "com": 0,
+                "com": 1,
                 "round": 0
             },
             {
                 "type": "range",
                 "orientation": "vertical",
-                "group": 0,               
+                "group": 0,
                 "tag": "corrente_set",
                 "x": 398,
-                "y": 315,
+                "y": 340,
                 "label": "P1 Set",
                 "unit": "a",
-                "com": 0
+                "com": 1
+            },
+            {
+                "type": "display",
+                "group": 0,
+                "x": 320,
+                "tag": "temp_rol",
+                "y": 365,
+                "label": "Temp Rol 01",
+                "unit": "c",
+                "com": 1,
+                "round": 0
+            },
+            {
+                "type": "display",
+                "group": 0,
+                "tag": "horimetro",
+                "x": 398,
+                "y": 365,
+                "label": "Horim",
+                "com": 1,
+                "unit": "ms",
+                "mode": "horimeter"
             },
             {
                 "type": "image",
                 "src": "left_arrow.png",
                 "group": 0,
-                "x": 320,
+                "x": 314,
                 "y": 260,
-                "w": 20,
-                "h": 20,
+                "w": 30,
+                "h": 30,
                 "tag": "prensa",
                 "value": "down",
-                "com": 0
+                "com": 1
             },
             {
                 "type": "image",
                 "src": "right_arrow.png",
                 "group": 0,
-                "x": 450,
+                "x": 448,
                 "y": 260,
-                "w": 20,
-                "h": 20,
+                "w": 30,
+                "h": 30,
                 "tag": "prensa",
                 "value": "up",
-                "com": 0
+                "com": 1
             },
             {
                 "type": "text",
@@ -220,125 +305,120 @@
                 "w": 100,
                 "h": 20,
                 "tag": "analog_output",
-                "com": 0
+                "com": 1
             },
             {
                 "type": "button",
                 "x": 320,
-                "y": 295,
+                "y": 320,
                 "w": 150,
                 "h": 20,
                 "label": "Automático (Amp)",
-                "com": 0,
+                "com": 1,
                 "tag": "auto_prensa",
                 "mode": "bool",
                 "group": 0
             },
             {
-                "type": "button",
-                "x": 250,
-                "y": 150,
-                "w": 60,
-                "h": 20,
-                "label": "Auto",
-                "com": 0,
-                "tag": "auto",               
-                "group": 0
-            },
-            {
-                "type": "button",
-                "x": 250,
-                "y": 170,
-                "w": 60,
-                "h": 20,
-                "label": "Aberto",
-                "com": 0,
-                "tag": "auto",               
-                "group": 0
-            },
-            {
-                "type": "retangle",
+                "type": "rectangle",
                 "x": 250,
                 "y": 120,
                 "w": 660,
                 "h": 30,
-                "label":"Calha de alimentação"  
+                "label": "Calha de alimentação",
+                "fill": "#b5b5b5"
             },
+            
             {
-                "type": "text",
-                "label": "Alimentação",
-               
-                "x": 730,
-                "y": 0,
+                "type": "button",
+                "x": 550,
+                "y": 150,
                 "w": 60,
                 "h": 20,
-                "src": "flow.png"
-            },
-            {
-                "type": "progressbar",
-                "label": "Alimentação M 01",                
-                "x": 718,
-                "y": 20,
-                "w": 100,
-                "h": 20,
-                "tag": "analog_output",
-                "com": 0
+                "label": "Auto",
+                "com": 7,
+                "tag": "auto_2",
+                "mode": "bool"
             },
             {
                 "type": "button",
-                "x": 692,
-                "y": 46,
-                "w": 150,
+                "x": 850,
+                "y": 150,
+                "w": 60,
                 "h": 20,
-                "label": "Automático (Amp)",
-                "com": 0,
-                "tag": "auto_prensa",
+                "label": "Auto",
+                "com": 7,
+                "tag": "auto_3",
                 "mode": "bool"
-               
             },
             {
-                "type": "display",               
-                "tag": "corrente_atual",                
-                "x": 692,
-                "y": 70,
-                "label": "Atual M01",
-                "unit": "a",
-                "com": 0,
-                "round": 0
+                "type": "button",
+                "x": 270,
+                "y": 120,
+                "w": 160,
+                "h": 30,
+                "label": "Rosca R1 Auto",
+                "com": 7,
+                "tag": "auto_rosca",
+                "mode": "bool"
             },
             {
-                "type": "range",
-                "orientation": "vertical",                         
-                "tag": "corrente_set",
-                "x": 770,
-                "y": 70,
-                "label": "M01 Set",
-                "unit": "a",
-                "com": 0
-            },
-            {
-                "type": "image",
-                "src": "left_arrow.png",
-                
-                "x": 690,
-                "y": 10,
-                "w": 20,
+                "type": "button",
+                "x": 550,
+                "y": 170,
+                "w": 60,
                 "h": 20,
-                "tag": "prensa",
-                "value": "down",
-                "com": 1
+                "label": "A/F",
+                "com": 7,
+                "tag": "aberto_2",
+                "label_on": {
+                    "text": "Aberto",
+                    "value": [
+                        "1"
+                    ],
+                    "output": "1"
+                },
+                "label_off": {
+                    "text": "Fechado",
+                    "value": [
+                        "0",
+                        ""
+                    ],
+                    "output": "0"
+                },
+                "mode": "boolText"
             },
             {
-                "type": "image",
-                "src": "right_arrow.png",               
-                "x": 822,
-                "y": 10,
-                "w": 20,
+                "type": "button",
+                "x": 850,
+                "y": 170,
+                "w": 60,
                 "h": 20,
-                "tag": "prensa",
-                "value": "up",
-                "com": 1
-            },
+                "label": "Aberto",
+                "com": 7,
+                "tag": "aberto_3",
+                "label_on": {
+                    "text": "Aberto",
+                    "value": [
+                        "1"
+                    ],
+                    "output": "1"
+                },
+                "label_off": {
+                    "text": "Fechado",
+                    "value": [
+                        "0",
+                        ""
+                    ],
+                    "output": "0"
+                },
+                "mode": "boolText"
+            },           
+            
+           
+           
+          
+          
             {
                 "type": "clone",
                 "group": 0,
@@ -356,12 +436,176 @@
                 "com": 2,
                 "index_old": 1,
                 "index": 3
-            }           
+            },
+            {
+                "type": "circle",
+                "x": 288,
+                "y": 209,
+                "w": 20,
+                "h": 20,
+                "label": "",
+                "fill": "red",
+                "com": 7,
+                "tag": "sensor_1",                
+                "mode": "bool"
+                
+            },
+            {
+                "type": "circle",
+                "x": 588,
+                "y": 209,
+                "w": 20,
+                "h": 20,
+                "label": "",
+                "fill": "red",
+                "com": 7,
+                "tag": "sensor_2",                
+                "mode": "bool"
+               
+            },
+            {
+                "type": "circle",
+                "x": 888,
+                "y": 209,
+                "w": 20,
+                "h": 20,
+                "label": "",
+                "fill": "red",
+                "com": 7,
+                "tag": "sensor_3",                
+                "mode": "bool"                
+            },
+                     {
+                "type": "image",
+                "src": "oil-tank.png",
+                "x": 240,
+                "y": 430,
+                "w": 60,
+                "h": 60
+            },
+            {
+                "type": "display",
+                "x": 310,
+                "tag": "data",
+                "y": 460,
+                "size": "medium",
+                "label": "Total Óleo",
+                "unit": "kg",
+                "com": 5,
+                "func": "sum"
+            },
+            {
+                "type": "image",
+                "src": "belt.png",
+                "x": 530,
+                "y": 430,
+                "w": 60,
+                "h": 60
+            },
+            {
+                "type": "display",
+                "x": 610,
+                "tag": "contagem",
+                "y": 460,
+                "size": "medium",
+                "label": "Carregado",
+                "unit": "un",
+                "com": 6
+            },
+            {
+                "type": "image",
+                "src": "belt_horizontal.png",
+                "x": 830,
+                "y": 430,
+                "w": 60,
+                "h": 60
+            },
+            {
+                "type": "display",
+                "x": 910,
+                "tag": "contagem2",
+                "y": 460,
+                "size": "medium",
+                "label": "Estoque",
+                "unit": "un",
+                "com": 6
+            }
+            ,{
+                "type": "range",
+                "orientation": "vertical",               
+                "tag": "estoque_oleo",
+                "x": 310,
+                "y": 430,
+                "label": "Corrigir Estoque óleo",
+                "w":160,
+                "unit": "kg",
+                "com": 11
+            }
         ],
         "com": [
             {
-                "ip": "192.168.1.231",
-                "name": "placa p1"
+                "type": "websocket",
+                "ip": "192.168.0.150",                
+                "name": "Fluxo"
+            },
+            {
+                "type": "websocket",
+                "ip": "192.168.0.154",
+                "name": "P1"
+            },
+            {
+                "type": "websocket",
+                "ip": "192.168.0.153",
+                "name": "P2"
+            },
+            {
+                "type": "websocket",
+                "ip": "192.168.0.152",
+                "name": "P3"
+            },
+            {
+                "type": "websocket",
+                "ip": "192.168.0.155",
+                "name": "M1"
+            },
+            {
+                "id": 5,
+                "type": "http_get",
+                "url": "localhost:8000/report/?ip=192.168.0.156",
+                "ip": "192.168.0.156",
+                "name": "M1"
+            },
+            {
+                "id": 6,
+                "type": "websocket",
+                "ip": "192.168.0.159",
+                "name": "Carregamento"
+            },
+            {
+                "id": 7,
+                "type": "websocket",   
+                "ip": "192.168.0.157",
+                "name": "Pistoes cozinhador"
+            },
+            {
+                "id": 8,
+                "type": "http_post",
+                "url": "localhost:8000/device/end_production" 
+            },
+            {
+                "id": 9,
+                "type": "http_post",
+                "url": "localhost:8000/device/start_production" 
+            },
+            {
+                "id": 10,
+                "type": "http_get",
+                "url": "localhost:8000/device/cfg/operando"
+            },
+            {
+                "id": 11,
+                "type": "http_post",
+                "url": "localhost:8000/device/revise/1"
             }
         ]
     }
